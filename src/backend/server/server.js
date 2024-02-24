@@ -10,7 +10,8 @@ app.use(express.json()); // Middleware para parsear JSON
 app.use(express.urlencoded({ extended: true })); // Agregar este middleware
 
 const path = require('path');
-const dbPath = path.resolve(__dirname, '../data/myBitcoinBalance.db');
+const databaseName = process.env.DATABASE_NAME;
+const dbPath = path.resolve(__dirname, '../data/' + databaseName);
 const db = new sqlite3.Database(dbPath);
 const apiKey = process.env.API_KEY;
 

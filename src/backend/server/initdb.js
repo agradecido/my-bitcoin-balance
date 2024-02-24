@@ -1,5 +1,9 @@
+require('dotenv').config({ path: '../../../.env'});
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('../data/myBitcoinBalance.db', (err) => {
+const databaseName = process.env.DATABASE_NAME;
+console.log('databaseName:', databaseName);
+
+const db = new sqlite3.Database('../data/' + databaseName, (err) => {
     if (err) {
         console.error('Error al abrir la base de datos', err);
     } else {
