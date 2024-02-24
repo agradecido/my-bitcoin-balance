@@ -24,7 +24,8 @@
     "start": "http-server ./dist",
     "watch": "webpack --watch --mode development",
     "start-server": "node ./dist/bundle.js",
-    "dev-server": "nodemon server.js ./src/backend/server/server.js"
+    "dev-server": "nodemon server.js ./src/backend/server/server.js",
+    "init-db": "node ./src/backend/server/initdb.js"
   },
   "dependencies": {
     "axios": "^1.6.7",

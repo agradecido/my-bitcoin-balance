@@ -29,6 +29,14 @@ Para instalar las dependencias del proyecto, ejecuta:
 ```bash
 npm install
 ```
+
+## Creación de la Base de Datos
+Para crear la base de datos si no existe, ejecuta:
+
+```bash
+npm run init-db
+```
+
 ## Desarrollo
 Para iniciar el servidor de desarrollo con reinicio automático, ejecuta:
     
