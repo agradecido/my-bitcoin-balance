@@ -1,6 +1,6 @@
 # PoC app Node.js, Express, htmx, Tailwind CSS
 
-Este proyecto es una aplicación web que permite a los usuarios ver su balance de Bitcoin, el valor actual de Bitcoin en USD y EUR, y gestionar registros de balance en una base de datos SQLite. Utiliza Express para el backend, SQLite para la persistencia de datos, y Tailwind CSS para el frontend.
+Este proyecto es una aplicación web que permite a los usuarios ver su balance de Bitcoin, el valor actual de Bitcoin en USD y EUR, y gestionar registros de balance en una base de datos SQLite. Utiliza Express para el backend, SQLite para la persistencia de datos y Tailwind CSS y htmx para el frontend.
 
 ## Características
 
@@ -13,7 +13,7 @@ Este proyecto es una aplicación web que permite a los usuarios ver su balance d
 
 - Backend: Node.js con Express
 - Base de Datos: SQLite
-- Frontend: HTML, Tailwind CSS
+- Frontend: htmx, Tailwind CSS
 - Herramientas: Webpack para empaquetado, Nodemon para desarrollo
 
 ## Configuración del Proyecto
