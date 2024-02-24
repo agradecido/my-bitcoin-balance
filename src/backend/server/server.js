@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true })); // Agregar este middleware
 const path = require('path');
 const dbPath = path.resolve(__dirname, '../data/myBitcoinBalance.db');
 const db = new sqlite3.Database(dbPath);
-const apiKey = process.env.CMC_PRO_API_KEY;
+const apiKey = process.env.API_KEY;
 
 // Insertar un nuevo balance
 app.post('/api/balance', (req, res) => {
@@ -24,7 +24,7 @@ app.post('/api/balance', (req, res) => {
     db.run(`INSERT INTO balance (date, amount) VALUES (?, ?)`, [date, amount], function (err) {
         if (err) {
             console.error('Error al insertar el balance', err);
-            res.status(500).send('Error al insertar el balance');
+            res.status(500).send('Error al insertar el balance: ' + err);
         } else {
             res.status(201).send({ id: this.lastID });
         }
@@ -36,7 +36,7 @@ app.get('/api/balance', (req, res) => {
     db.all(`SELECT * FROM balance`, [], (err, rows) => {
         if (err) {
             console.error('Error al obtener los balances', err);
-            res.status(500).send('Error al obtener los balances');
+            res.status(500).send('Error al obtener los balances: ' + err);
         } else {
             console.log('Balance añadido correctamente');
             res.status(200).json(rows);
@@ -61,7 +61,7 @@ app.get('/api/bitcoinPrice', (req, res) => {
     const axios = require('axios');
     axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC', {
         headers: {
-            'X-CMC_PRO_API_KEY': 'apiKey'
+            'X-CMC_PRO_API_KEY': apiKey
         },
         params: {
             'convert': 'EUR'
@@ -74,8 +74,8 @@ app.get('/api/bitcoinPrice', (req, res) => {
             res.status(200).json({ EUR: priceEUR });
         })
         .catch(error => {
-            console.error('Error al obtener el precio de Bitcoin', error);
-            res.status(500).send('Error al obtener el precio de Bitcoin');
+            console.error('Error al obtener el precio de Bitcoin: ', error);
+            res.status(500).send('Error al obtener el precio de Bitcoin: ' + error);
         });
 });
 
